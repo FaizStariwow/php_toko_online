@@ -43,7 +43,7 @@
               <span class="hide-menu">PRODUCT</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="../produk/produk.php" aria-expanded="false">
+              <a class="sidebar-link" href="../produk/index.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-shopping-cart"></i>
                 </span>

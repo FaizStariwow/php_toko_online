@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
-
+<?php 
+    
+?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,37 +23,35 @@
             <!--  Header Start -->
             <?php include '../layout/header.php'; ?>
             <!--  Header End -->
-            <!-- Content   -->
+            <!-- Content -->
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5>Produk</h5>
-                                <div class="card" style="width: 18rem;">
-                                    <img src="..." class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="index.php" class="btn btn-danger float-md-start">
+                                    <i class="ti ti-arrow-left"></i>
+                                </a>
+                                <h5 class="card-title d-flex justify-content-center">Add Category</h5>
+                                <form action="../../action/kategori_action/insert_kategori_act.php" method="post" class="mt-5">
+                                    <div class="mb-3">
+                                        <label for="exampleInputtext1" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="exampleInputtext1" aria-describedby="textHelp" name="name"  >
                                     </div>
-                                </div>
+                                    <input type="submit" class="btn btn-success py-8 fs-4 mb-4 rounded-2" value="Simpan">
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
     <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/sidebarmenu.js"></script>
     <script src="../../assets/js/app.min.js"></script>
-
     <script src="../../assets/libs/simplebar/dist/simplebar.js"></script>
-
 </body>
 
 </html>

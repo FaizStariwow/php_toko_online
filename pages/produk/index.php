@@ -28,10 +28,10 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="./add_kategori.php" class="btn btn-success float-md-end">
-                                    Add Category <i class="ti ti-plus"></i>
+                                <a href="./add_produk.php" class="btn btn-success float-md-end">
+                                    Add Product <i class="ti ti-plus"></i>
                                 </a>
-                                <h5 class="card-title d-flex justify-content-start">Tabel Kategori</h5>
+                                <h5 class="card-title d-flex justify-content-start">Tabel Produk</h5>
 
                                 <?php
                                 if (isset($_SESSION['msg'])) {
@@ -59,21 +59,30 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama</th>
-                                                <th>Action</th>
+                                                <th>Kategori</th>
+                                                <th>Harga</th>
+                                                <th>Deskripsi</th>
+                                                <th>Foto</th>
+                                                <th>Stok</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            include '../../action/kategori_action/show_data_kategori_act.php';
+                                            include '../../action/produk_action/show_data_produk_act.php';
                                             $no=1;
                                             while ($data = mysqli_fetch_assoc($result)) {
                                             ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $data['nama'] ?></td>
+                                                    <td><?= $data['kategori'] ?></td>
+                                                    <td><?= $data['harga'] ?></td>
+                                                    <td><?= $data['deskripsi'] ?></td>
+                                                    <td><img src="../../assets/images/produk/<?= $data['foto_produk'] ?>" style="width: 100px;" ></td>
+                                                    <td><?= $data['stok_produk'] ?></td>
                                                     <td>
-                                                        <a href="edit_kategori.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="ti ti-edit"></i></a>
-                                                        <a href="../../action/user_action/delete_user_act.php?id=<?= $data['id'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><i class="ti ti-trash"></i></a>
+                                                        <a href="edit_produk.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="ti ti-edit"></i></a>
+                                                        <a href="../../action/produk_action/delete_produk_act.php?id=<?= $data['id'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><i class="ti ti-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php
