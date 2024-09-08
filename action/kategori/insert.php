@@ -4,7 +4,7 @@ include '../../connection/connection.php';
 
 $name = $_POST['name'];
 
-$sql = "INSERT * INTO kategori_produk VALUES('null, '$name')" ;
+$sql = "INSERT INTO kategori_produk VALUES(null, '$name')" ;
 
 if($conn->query($sql) == true){
     session_start();
@@ -15,5 +15,3 @@ if($conn->query($sql) == true){
     $_SESSION['msg_error'] = 'Add Kategori Failed';
     header('location:../../pages/kategori/index.php');
 }
-
-?>

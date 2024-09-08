@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize Free</title>
+    <title>RPL CRUD</title>
     <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="../../assets/css/styles.min.css" />
 </head>
@@ -28,7 +28,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="./add_kategori.php" class="btn btn-success float-md-end">
+                                <a href="./create.php" class="btn btn-success float-md-end">
                                     Add Category <i class="ti ti-plus"></i>
                                 </a>
                                 <h5 class="card-title d-flex justify-content-start">Tabel Kategori</h5>
@@ -64,7 +64,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            include '../../action/kategori_action/show_data_kategori_act.php';
+                                            include '../../action/kategori/show_data.php';
                                             $no=1;
                                             while ($data = mysqli_fetch_assoc($result)) {
                                             ?>
@@ -72,8 +72,8 @@
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $data['nama'] ?></td>
                                                     <td>
-                                                        <a href="edit_kategori.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="ti ti-edit"></i></a>
-                                                        <a href="../../action/user_action/delete_user_act.php?id=<?= $data['id'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><i class="ti ti-trash"></i></a>
+                                                        <a href="edit.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="ti ti-edit"></i></a>
+                                                        <a href="../../action/kategori/delete.php?id=<?= $data['id'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><i class="ti ti-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php
@@ -88,6 +88,7 @@
                     </div>
                 </div>
             </div>
+            <?php include '../layout/footer.php' ?>
         </div>
     </div>
     <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>

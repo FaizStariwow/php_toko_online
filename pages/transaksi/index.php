@@ -29,9 +29,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <a href="./create.php" class="btn btn-success float-md-end">
-                                    Add User <i class="ti ti-plus"></i>
+                                    tambah transaksi<i class="ti ti-plus"></i>
                                 </a>
-                                <h5 class="card-title d-flex justify-content-start">Tabel User</h5>
+                                <h5 class="card-title d-flex justify-content-start">Tabel transaksi</h5>
 
                                 <?php
                                 if (isset($_SESSION['msg'])) {
@@ -58,26 +58,36 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Email</th>
-                                                <th>Username</th>
+                                                <th>pembeli</th>
+                                                <th>produk</th>
+                                                <th>invoice</th>
+                                                <th>alamat pengiriman</th>
+                                                <th>total harga</th>
+                                                <th>jumlah</th>
+                                                <th>tanggal transaksi</th>
+                                                <th>status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            include '../../action/user/show_data.php';
+                                            include '../../action/transaksi/show_data.php';
                                             $no=1;
                                             while ($data = mysqli_fetch_assoc($result)) {
                                             ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
-                                                    <td><?= $data['nama'] ?></td>
-                                                    <td><?= $data['email'] ?></td>
-                                                    <td><?= $data['username'] ?></td>
+                                                    <td><?= $data['user_nama'] ?></td>
+                                                    <td><?= $data['produk_nama'] ?></td>
+                                                    <td><?= $data['pembayaran_id'];?>   </td>
+                                                    <td><?= $data['alamat_pengiriman'] ?></td>
+                                                    <td><?= $data['total_harga'] ?></td>
+                                                    <td><?= $data['jumlah'] ?></td>
+                                                    <td><?= $data['tgl_transaksi'] ?></td>
+                                                    <td><?= $data['status'] ?></td>
                                                     <td>
                                                         <a href="edit.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="ti ti-edit"></i></a>
-                                                        <a href="../../action/user/delete.php?id=<?= $data['id'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><i class="ti ti-trash"></i></a>
+                                                        <a href="../../action/transaksi/delete.php?id=<?= $data['id'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><i class="ti ti-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php
