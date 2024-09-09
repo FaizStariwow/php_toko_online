@@ -3,7 +3,7 @@
 
     $id = $_GET['id'];
     
-    $sql = 'SELECT * FROM kategori WHERE id=  '. $id;
+    $sql = 'SELECT * FROM transaksi WHERE id=  '. $id;
 
     $result = $conn->query($sql);
 

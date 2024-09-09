@@ -14,15 +14,10 @@ $sql = "UPDATE kategori_produk SET nama = '$name' WHERE id = $id";
 //responnya apa dan kemana
 if($conn->query($sql) === TRUE){
     session_start();
-    $_SESSION['msg'] = 'Update User Success';
+    $_SESSION['msg'] = 'Update Kategori Success';
     header('Location:../../pages/kategori/index.php');
 }else{
     session_start();
-    $_SESSION['msg_err'] = 'Update User Failed';
+    $_SESSION['msg_err'] = 'Update Kategori Failed';
     header('Location:../../pages/kategori/index.php');
 }
-
-
-
-
-?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -29,14 +29,16 @@ session_start();
                   <img src="../assets/images/logos/dark-logo.svg" width="180" alt="">
                 </a>
                 <p class="text-center">Your Social Campaigns</p>
-                <?php 
-                if(isset($_SESSION['message'])) {
-                  ?>
-                  <div class="alert alert-danger alert-dismissable fade show" role="alert">
-                    <?= $_SESSION['message'];?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                <?php
+                if (isset($_SESSION['message'])) {
+                ?>
+                  <div class="alert alert-danger alert-dismissable fade show d-flex" role="alert">
+                    <?= $_SESSION['message']; ?>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="close"></button>
                   </div>
-                  <?php
+
+                <?php
+                  unset($_SESSION['message']);
                 }
                 ?>
 
@@ -56,17 +58,18 @@ session_start();
                         Remeber this Device
                       </label>
                     </div>
-                    <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
+                    <!-- <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a> -->
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</a>
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">New to Modernize?</p>
-                    <input type="submit" class="text-primary fw-bold ms-2" value="Create an account">
+                    <a class="ms-2" href="register_view.php"> Register here</a>
                   </div>
                 </form>
               </div>
             </div>
           </div>
+          <?php include 'layout/footer.php' ?>
         </div>
       </div>
     </div>
