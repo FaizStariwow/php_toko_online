@@ -5,8 +5,9 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $username = $_POST['username'];
 $password = $_POST['password'];
+$role = $_POST['role'];
 
-$sql = "INSERT INTO user VALUES (null,'$name', '$username','$email', '$password')";
+$sql = "INSERT INTO user VALUES (null,'$name', '$username','$email', '$password','$role')";
 
 if($conn->query($sql) == true){
     session_start();

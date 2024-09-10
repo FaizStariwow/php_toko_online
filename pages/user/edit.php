@@ -47,9 +47,17 @@ include '../../action/user/show_detail.php'
                                         <label for="exampleInputEmail1" class="form-label">Email Address</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<?= $data['email'] ?>">
                                     </div>
-                                    <div class="mb-4">
+                                    <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
                                         <input type="text" class="form-control" id="exampleInputPassword1" name="password" value="<?= $data['password'] ?>">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                                        <select name="role" id="" class="form-select">
+                                            <option selected>Pilih Role Anda</option>
+                                            <option value="1" <?= $data['role'] == 1 ? 'selected' : '' ?>>Admin</option>
+                                            <option value="2" <?= $data['role'] == 2 ? 'selected' : '' ?>>User</option>
+                                        </select>
                                     </div>
                                     <input type="submit" class="btn btn-primary" value="Save"></input>
                                 </form>

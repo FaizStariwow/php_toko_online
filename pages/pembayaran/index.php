@@ -12,7 +12,8 @@
 
 <body>
     <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
         <?php include '../layout/sidebar.php'; ?>
         <!--  Sidebar End -->
@@ -28,9 +29,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <a href="./create.php" class="btn btn-success float-md-end">
-                                    Add User <i class="ti ti-plus"></i>
+                                    Add <i class="ti ti-plus"></i>
                                 </a>
-                                <h5 class="card-title d-flex justify-content-start">Tabel User</h5>
+                                <h5 class="card-title d-flex justify-content-start">Tabel Metode Pembayaran</h5>
 
                                 <?php
                                 if (isset($_SESSION['msg'])) {
@@ -58,37 +59,22 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama</th>
-                                                <th>Email</th>
-                                                <th>Username</th>
-                                                <th>Role</th>
                                                 <th>Action</th>
-                                                
-
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            include '../../action/user/show_data.php';
-                                            $no = 1;
+                                            include '../../action/pembayaran/show_data.php';
+                                            $no=1;
                                             while ($data = mysqli_fetch_assoc($result)) {
                                             ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $data['nama'] ?></td>
-                                                    <td><?= $data['email'] ?></td>
-                                                    <td><?= $data['username'] ?></td>
-                                                    
-                                                        <?php if($data['role'] == 1){ ?>
-                                                    <td>Admin</td>
-                                                <?php } else { ?>
-                                                    <td>User</td>
-                                                <?php } ?>
-
-                                                
-                                                <td>
-                                                    <a href="edit.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="ti ti-edit"></i></a>
-                                                    <a href="../../action/user/delete.php?id=<?= $data['id'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><i class="ti ti-trash"></i></a>
-                                                </td>
+                                                    <td>
+                                                        <a href="edit.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="ti ti-edit"></i></a>
+                                                        <a href="../../action/pembayaran/delete.php?id=<?= $data['id'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><i class="ti ti-trash"></i></a>
+                                                    </td>
                                                 </tr>
                                             <?php
                                             }

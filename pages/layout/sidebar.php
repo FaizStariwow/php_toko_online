@@ -58,20 +58,20 @@
             <span class="hide-menu">Kategori</span>
           </a>
         </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="../pembayaran/index.php" aria-expanded="false">
+            <span>
+              <i class="ti ti-cash"></i>
+            </span>
+            <span class="hide-menu">Metode Pembayaran</span>
+          </a>
+        </li>
         <li class="nav-small-cap">
           <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
           <span class="hide-menu">TRANSAKSI</span>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="../transaksi/" aria-expanded="false">
-            <span>
-              <i class="ti ti-credit-card"></i>
-            </span>
-            <span class="hide-menu">Transaksi</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+          <a class="sidebar-link" href="../transaksi/index.php" aria-expanded="false">
             <span>
               <i class="ti ti-history"></i>
             </span>
