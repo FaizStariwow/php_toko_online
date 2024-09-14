@@ -2,6 +2,8 @@
 <html lang="en">
 <?php 
     include '../../action/produk/show_detail.php';
+
+    include '../../action/security.php';
 ?>
 <head>
     <meta charset="utf-8">

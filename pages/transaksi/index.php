@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
-<?php session_start(); ?>
+<?php  
+
+include '../../action/security.php';
+?>
 
 <head>
     <meta charset="utf-8">
@@ -27,9 +30,6 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="./create.php" class="btn btn-success float-md-end">
-                                    Add <i class="ti ti-plus"></i>
-                                </a>
                                 <h5 class="card-title d-flex justify-content-start">Tabel Riwayat Transaksi</h5>
 
                                 <?php
@@ -78,7 +78,6 @@
                                                     <td><?= $data['total_harga'] ?></td>
                                                     <td><?= $data['tgl_transaksi'] ?></td>
                                                     <td>
-                                                    <td>
                                                         <a href="" data-bs-toggle="modal" data-bs-target="#editStatus" data-id="<?= $data['id'] ?>" data-status="<?= $data['status'] ?>">
                                                             <?php if ($data['status'] == 1) { ?>
                                                                 <span class="badge bg-warning rounded-3 fw-semibold">Pending</span>  
@@ -90,7 +89,7 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a href="" class="badge bg-primary text-white "data-bs-toggle="modal" data-bs-target="#detailTransaksi"><i class="ti ti-eye" ></i></a>
+                                                        <a href="" class="badge bg-primary text-white "data-bs-toggle="modal" data-bs-target="#detailTransaksi" data-id="<?= $data['id']?>"><i class="ti ti-eye" ></i></a>
                                                     </td>
                                                 </tr>
                                             <?php
@@ -141,6 +140,7 @@
         </div>
     </div>
 
+<!-- Modal Detail -->
     <div class="modal fade" id="detailTransaksi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -149,8 +149,31 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../../action/transaksi/update.php" method="post">
-                        <input type="hidden" name="id" id="id">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="fw-bold">Pembeli</p>
+                            <p class="fw-bold">Produk</p>
+                            <p class="fw-bold">Pembayaran</p>
+                            <p class="fw-bold">Alamat</p>
+                            <p class="fw-bold">Total Harga</p>
+                            <p class="fw-bold">Jumlah</p>
+                            <p class="fw-bold">Tgl Transaksi</p>
+                            <p class="fw-bold">Status</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="fw-bold" id="pembeli"></p>
+                            <p class="fw-bold" id="produk"></p>
+                            <p class="fw-bold" id="pembayaran"></p>
+                            <p class="fw-bold" id="alamat"></p>
+                            <p class="fw-bold" id="total"></p>
+                            <p class="fw-bold" id="qty"></p>
+                            <p class="fw-bold" id="tgl"></p>
+                            <span id="status_pembayaran"></span>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="" alt="" id="foto_produk" width="150px">
+                        </div>
+                    </div>
                         
 
                 </div>
@@ -175,6 +198,49 @@
             modal.find('.modal-body #id').val(id);
             modal.find('.modal-body #status').val(status);
         })
+
+        $('#detailTransaksi').on('show.bs.modal', function(event) {
+            var a = $(event.relatedTarget);
+            var id = a.data('id');
+        $.ajax({
+                type: 'post',
+                url: '../../action/transaksi/show_detail.php',
+                data: {
+                    id: id
+
+                },
+                success: function(data) {
+                    var obj = JSON.parse(data);
+                    console.log(obj);
+                    $('#pembeli').html(obj.pembeli);
+                    $('#produk').html(obj.produk);
+                    $('#pembayaran').html(obj.pembayaran);
+                    $('#qty').html(obj.qty);
+                    $('#tgl').html(obj.tgl_transaksi);
+                    $('#alamat').html(obj.alamat_pengiriman);
+                    $('#total').html(obj.total_harga);
+                    $('#status_pembayaran').html(obj.status);
+
+                    // status
+                    if(obj.status == 1){
+                        $('#status_pembayaran').attr('class','badge bg-warning rounded-3 fw-semibold').html('Pending');
+                    }
+                    if(obj.status == 2){
+                        $('#status_pembayaran').attr('class','badge bg-success rounded-3 fw-semibold').html('Success');
+                    }else{
+                        $('#status_pembayaran').attr('class','badge bg-danger rounded-3 fw-semibold').html('Failed');
+                    }
+
+                    // image
+                    $('#foto_produk').attr('src', '../../assets/images/produk/' + obj.foto_produk);
+                
+                },
+                
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
     </script>
 
 </body>

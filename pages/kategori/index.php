@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
-<?php session_start(); ?>
+<?php
+include '../../action/security.php';
+?>
 
 <head>
     <meta charset="utf-8">
@@ -12,8 +14,7 @@
 
 <body>
     <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
         <?php include '../layout/sidebar.php'; ?>
         <!--  Sidebar End -->
@@ -65,7 +66,7 @@
                                         <tbody>
                                             <?php
                                             include '../../action/kategori/show_data.php';
-                                            $no=1;
+                                            $no = 1;
                                             while ($data = mysqli_fetch_assoc($result)) {
                                             ?>
                                                 <tr>

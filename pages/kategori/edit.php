@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
     <?php
-    include '../../action/kategori/show_detail.php'
+    include '../../action/kategori/show_detail.php';
+    include '../../action/security.php';
     ?>
 
 <head>
